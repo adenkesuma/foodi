@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Cards } from "../../components";
+import { ChevronRight, ChevronLeft } from "lucide-react"
 
 const SpecialDishes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -18,15 +19,15 @@ const SpecialDishes = () => {
   }, [])
 
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 2,
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1224,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -49,19 +50,30 @@ const SpecialDishes = () => {
           slidesToScroll: 1
         }
       }
-    ]
+    ],
+    nextArrow: <></>,
+    prevArrow: <></>
   };
 
   return (
     <div className="section-container py-24">
-      <div className="mb-10">
+      <div className="mb-10 flex items-end justify-between">
         <div>
           <p className="subtitle">Special Dishes</p>
           <h2 className="title">Standout Dishes From Our Menu</h2>
         </div>
+
+        <div>
+          <button onClick={() => slider?.current?.slickPrev()} className="p-2 mr-3 bg-third rounded-full">
+            <ChevronLeft />
+          </button>
+          <button onClick={() => slider?.current?.slickNext()} className="p-2 bg-secondary rounded-full">
+            <ChevronRight className="text-white" />
+          </button>
+        </div>
       </div>
 
-      <Slider {...settings}>
+      <Slider {...settings} ref={slider}>
         {recipes.map((item) => (
           <Cards key={item._id} item={item} />
         ))}  

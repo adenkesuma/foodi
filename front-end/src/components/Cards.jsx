@@ -6,7 +6,7 @@ const Cards = ({ item }) => {
   const [isHeartFillted, setIsheartFillted] = useState(false);
 
   return (
-    <div className="card shadow-none relative w-[290px] bg-base-100 bg-white/15 rounded-3xl z-0">
+    <div className="card shadow-none relative sm:52 md:w-72 lg:w-80 xl:w-[290px] bg-base-100 bg-white/15 rounded-3xl z-0">
       <button onClick={() => setIsheartFillted(!isHeartFillted)} className={`rating gap-1 absolute right-4 top-4 p-3 rounded-full bg-white/40`}>
         <input 
           type="radio"
