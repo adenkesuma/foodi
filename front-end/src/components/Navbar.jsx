@@ -10,7 +10,7 @@ const Navbar = () => {
       <li>
         <details>
           <summary className="text-sm">Menu</summary>
-          <ul className="p- w-32 shadow-none bg-transparent lg:bg-white/40 backdrop-blur-lg">
+          <ul className="p- w-32 shadow-none bg-transparent lg:bg-third">
             <li>
               <Link className="text-sm" to="/all">All</Link>
             </li>
@@ -26,7 +26,7 @@ const Navbar = () => {
       <li>
         <details>
           <summary className="text-sm">Services</summary>
-          <ul className="p-2 w-52 shadow-none bg-transparent lg:bg-white/40 backdrop-blur-lg">
+          <ul className="p-2 w-52 shadow-none bg-transparent lg:bg-third">
             <li>
               <Link className="text-sm" to="/">Online Order</Link>
             </li>
@@ -46,8 +46,8 @@ const Navbar = () => {
   )
 
   return (
-    <nav className="max-w-screen-2xl container mx-auto bg-black">
-      <div className="navbar bg-base-100">
+    <nav className="section-container">
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -57,7 +57,10 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <span className="text-xl font-semibold">FOODI</span>
+          <span className="text-xl font-bold">
+            <span className="bg-primary rounded-md px-2 mr-[2px] text-white">F</span>
+            OODI
+          </span>
         </div>
 
         <div className="navbar-center mt-2 hidden lg:flex">
@@ -78,7 +81,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <button className="bg-primary px-6 py-2 rounded-lg text-white font-medium text-sm">Contact</button>
+          <button className="bg-primary px-6 py-2 rounded-xl text-white font-medium text-sm">Contact</button>
         </div>
       </div>
     </nav>
