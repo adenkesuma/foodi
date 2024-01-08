@@ -1,11 +1,12 @@
 import { Banner } from "../../components"
-import { Categories } from "../index"
+import { Categories, SpecialDishes } from "../index"
 
 const Home = () => {
   return (
     <div className="px-8">
       <Banner />
       <Categories />
+      <SpecialDishes />
     </div>
   )
 }
