@@ -54,7 +54,7 @@ const SpecialDishes = () => {
 
   return (
     <div className="section-container py-24">
-      <div>
+      <div className="mb-10">
         <div>
           <p className="subtitle">Special Dishes</p>
           <h2 className="title">Standout Dishes From Our Menu</h2>

@@ -46,7 +46,7 @@ const Navbar = () => {
   )
 
   return (
-    <nav className="sticky top-0 left-0 right-0 duration-300 transition-all bg-[#ECE3CA]">
+    <nav className="sticky top-0 left-0 right-0 duration-300 transition-all bg-[#ECE3CA] z-40">
       <div className="navbar section-container px-6 lg:px-4 xl:px-0">
         <div className="navbar-start">
           <div className="dropdown">
