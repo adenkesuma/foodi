@@ -2,12 +2,12 @@ import { Play } from "lucide-react";
 
 const Banner = () => {
   return (
-    <header className="section-container">
-      <div className="flex flex-col justify-center items-center gap-6 mt-20">
-        <h1 className="text-6xl font-bold">
-          Dive into Delights of Delectable <span className="text-secondary">Food</span>
+    <header className="section-container mt-20">
+      <div className="flex flex-col justify-center items-center w-full h-full gap-6 px-6">
+        <h1 className="text-7xl font-bold leading-[1.2] text-center">
+          Dive into Delights of<br /> Delectable <span className="text-secondary">Food</span>
         </h1>
-        <p className="text-base font-medium">Where Each Plate Weaves a Story of Culinary Mastery and Passionate Craftsmanship</p>
+        <p className="text-base font-medium text-center">Where Each Plate Weaves a Story of Culinary Mastery and Passionate Craftsmanship</p>
 
         <div className="flex items-center justify-center gap-4 mt-1">
           <button className="px-6 py-2 rounded-xl bg-primary text-white text-sm font-medium">

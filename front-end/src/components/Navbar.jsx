@@ -46,8 +46,8 @@ const Navbar = () => {
   )
 
   return (
-    <nav className="section-container">
-      <div className="navbar">
+    <nav className="sticky top-0 left-0 right-0 duration-300 transition-all bg-[#ECE3CA]">
+      <div className="navbar section-container">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

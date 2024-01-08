@@ -3,7 +3,7 @@ import { Navbar } from "../components"
 
 const Main = () => {
   return (
-    <div>
+    <div className="h-[300vh]">
       <Navbar />
       <Outlet />
       <footer>footer</footer>
