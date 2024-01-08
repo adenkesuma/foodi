@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary": "#39DB4A",
+        "primary": "#7D0A0A",
         "third": "#FF6868",
         "foreground": "#555555",
         "white-background": "#FCFCFC"
@@ -17,5 +17,8 @@ export default {
       }
     },
   },
-  plugins: [],
+  daisyui: {
+    themes: ["cupcake", "dark", "cmyk", "retro"],
+  },
+  plugins: [require("daisyui")],
 }
