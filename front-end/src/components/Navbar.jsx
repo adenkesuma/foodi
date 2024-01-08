@@ -1,44 +1,47 @@
 import { Link } from "react-router-dom";
+import { ShoppingCart, Search, Menu } from "lucide-react";
 
 const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link className="text-sm" to="/">Home</Link>
       </li>
       <li>
         <details>
-          <summary>Menu</summary>
-          <ul className="p-2">
+          <summary className="text-sm">Menu</summary>
+          <ul className="p- w-32 shadow-none bg-transparent lg:bg-white/40 backdrop-blur-lg">
             <li>
-              <Link to="/all">All</Link>
+              <Link className="text-sm" to="/all">All</Link>
             </li>
             <li>
-              <Link to="/salad">Salad</Link>
+              <Link className="text-sm" to="/salad">Salad</Link>
             </li>
             <li>
-              <Link to="/pizza">Pizza</Link>
+              <Link className="text-sm" to="/pizza">Pizza</Link>
             </li>
           </ul>
         </details>
       </li>
       <li>
         <details>
-          <summary>Menu</summary>
-          <ul className="p-2">
+          <summary className="text-sm">Services</summary>
+          <ul className="p-2 w-52 shadow-none bg-transparent lg:bg-white/40 backdrop-blur-lg">
             <li>
-              <Link to="/all">All</Link>
+              <Link className="text-sm" to="/">Online Order</Link>
             </li>
             <li>
-              <Link to="/salad">Salad</Link>
+              <Link className="text-sm" to="/">Table Booking</Link>
             </li>
             <li>
-              <Link to="/pizza">Pizza</Link>
+              <Link className="text-sm" to="/">Order Tracking</Link>
             </li>
           </ul>
         </details>
       </li>
-      <li><a>Item 3</a></li>
+      <li>
+        <Link className="text-sm" to="/offers">Offers</Link> 
+      </li>
     </>
   )
 
@@ -48,7 +51,7 @@ const Navbar = () => {
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+              <Menu className="w-5" />
             </div>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
               {navItems}
@@ -57,14 +60,25 @@ const Navbar = () => {
           <span className="text-xl font-semibold">FOODI</span>
         </div>
 
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center mt-2 hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             {navItems}      
           </ul>
         </div>
 
-        <div className="navbar-end">
-          <button className="bg-primary px-8 py-2 rounded-lg text-white font-medium text-sm">Button</button>
+        <div className="navbar-end flex items-enter gap-8">
+          <button className="cursor-pointer">
+            <Search className="w-5" />
+          </button>
+
+          <div className="relative cursor-pointer mr-3">
+            <ShoppingCart className="w-5" />
+            <div className="bg-primary absolute -top-2 -right-2 px-[7px] py-[2px] rounded-full flex items-center justify-center">
+              <span className="text-white text-xs">8</span>
+            </div>
+          </div>
+
+          <button className="bg-primary px-6 py-2 rounded-lg text-white font-medium text-sm">Contact</button>
         </div>
       </div>
     </nav>
