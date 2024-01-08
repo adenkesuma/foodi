@@ -36,7 +36,7 @@ const SpecialDishes = () => {
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 800,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -63,7 +63,7 @@ const SpecialDishes = () => {
           <h2 className="title">Standout Dishes From Our Menu</h2>
         </div>
 
-        <div>
+        <div className="flex items-center">
           <button onClick={() => slider?.current?.slickPrev()} className="p-2 mr-3 bg-third rounded-full">
             <ChevronLeft />
           </button>
