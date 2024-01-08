@@ -10,7 +10,7 @@ const Navbar = () => {
       <li>
         <details>
           <summary className="text-sm">Menu</summary>
-          <ul className="p- w-32 shadow-none bg-transparent lg:bg-third">
+          <ul className="p- w-32 shadow-none bg-transparent lg:bg-[#ECE3CA] lg:shadow-md">
             <li>
               <Link className="text-sm" to="/all">All</Link>
             </li>
@@ -26,7 +26,7 @@ const Navbar = () => {
       <li>
         <details>
           <summary className="text-sm">Services</summary>
-          <ul className="p-2 w-52 shadow-none bg-transparent lg:bg-third">
+          <ul className="p-2 w-52 shadow-none bg-transparent lg:bg-[#ECE3CA] lg:shadow-md">
             <li>
               <Link className="text-sm" to="/">Online Order</Link>
             </li>
@@ -47,7 +47,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 left-0 right-0 duration-300 transition-all bg-[#ECE3CA]">
-      <div className="navbar section-container">
+      <div className="navbar section-container px-6 lg:px-4 xl:px-0">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

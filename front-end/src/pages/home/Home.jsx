@@ -1,11 +1,13 @@
 import { Banner } from "../../components"
+import { Categories } from "../index"
 
 const Home = () => {
   return (
-    <div>
+    <div className="px-8">
       <Banner />
+      <Categories />
     </div>
   )
 }
 
-export default Home
+export default Home;

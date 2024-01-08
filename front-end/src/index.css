@@ -11,3 +11,11 @@ body {
 .section-container {
   @apply max-w-screen-xl container mx-auto;
 }
+
+.title {
+  @apply text-4xl text-center font-bold;
+}
+
+.subtitle {
+  @apply text-secondary uppercase tracking-wide mb-2 font-medium text-sm;
+}
