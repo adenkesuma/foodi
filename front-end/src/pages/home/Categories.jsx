@@ -23,7 +23,7 @@ const Categories = () => {
 
       <div className="grid grid-cols-2 lg:grid-cols-4 mt-10 gap-6 lg:gap-8">
         {categoryItems.map((category) => (
-          <div key={category.id} className="bg-white/15 rounded-3xl p-6 lg:p-8">
+          <div key={category.id} className="bg-white/30 rounded-3xl p-6 lg:p-8">
             <div className="flex justify-center">
               <img 
                 src={category.image} 

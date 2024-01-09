@@ -6,7 +6,6 @@ const Main = () => {
     <div className="h-[300vh]">
       <Navbar />
       <Outlet />
-      <footer>footer</footer>
     </div>
   )
 }
