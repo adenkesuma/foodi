@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Filter } from "lucide-react";
 import { Cards } from "../../components";
 
 const Menu = () => {
@@ -39,10 +40,10 @@ const Menu = () => {
     
     switch (option) {
       case "A-Z":
-        sortedItems.sort((a, b) => a.name.localCompare(b.name));
+        sortedItems.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case "Z-A":
-        sortedItems.sort((a, b) => b.name.localCompare(a.name));
+        sortedItems.sort((a, b) => b.name.localeCompare(a.name));
         break;
       case "low-to-high":
         sortedItems.sort((a, b) => a.price - b.price);
@@ -81,8 +82,23 @@ const Menu = () => {
             <button className={selectedCategory === "dessert" ? "active" : ""} onClick={() => filterItems("dessert")}>Desserts</button>
             <button className={selectedCategory === "drinks" ? "active" : ""} onClick={() => filterItems("drinks")}>Drinks</button>
           </aside>
-          <aside>
 
+          <aside className="flex items-center gap-2">
+            <div className="rounded-xl bg-white/40 py-1 px-2" >
+              <Filter className="w-4" />
+            </div>
+            <select 
+              value={sortOption} 
+              onChange={(e) => handleSortChange(e.target.value)} 
+              name="sort" id="sort"
+              className="rounded-xl px-3 bg-white/40 border-none select select-sm w-32"
+            >
+              <option value="default">Default</option>
+              <option value="A-Z">A - Z</option>
+              <option value="Z-A">Z - A</option>
+              <option value="low-to-high">Low to High</option>
+              <option value="high-to-low">High to Low</option>
+            </select>
           </aside>
         </div>
 
