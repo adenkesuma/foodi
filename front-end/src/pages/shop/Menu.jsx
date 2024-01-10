@@ -7,6 +7,8 @@ const Menu = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortOption, setSortOption] = useState("default");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(8);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,11 +29,13 @@ const Menu = () => {
     const filtered = category === "all" ? menu : menu.filter((item) => item.category === category);
     setFilteredItems(filtered);
     setSelectedCategory(category);
+    setCurrentPage(1);
   }
 
   const showAll = () => {
     setFilteredItems(menu);
     setSelectedCategory("all");
+    setCurrentPage(1);
   }
 
   const handleSortChange = (option) => {
@@ -56,7 +60,13 @@ const Menu = () => {
     }
 
     setFilteredItems(sortedItems);
+    setCurrentPage(1);
   }
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -103,10 +113,22 @@ const Menu = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {filteredItems.map((item) => (
+          {currentItems.map((item) => (
             <Cards item={item} key={item._id} />
           ))}
         </div> 
+
+        <div className="w-full mx-auto flex justify-center py-12">
+          {Array.from({length: Math.ceil(filteredItems.length / itemsPerPage)}).map((_, index) => (
+            <button 
+              key={index+1} 
+              onClick={() => paginate(index+1)}
+              className={`mx-1 px-3 py-1 rounded-full ${currentPage === index+1 ? "bg-primary text-white" : "bg-third"}`}
+            >
+              {index+1}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   )
