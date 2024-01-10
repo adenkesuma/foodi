@@ -1,5 +1,5 @@
 import { Banner } from "../../components"
-import { Categories, SpecialDishes, Testimonials } from "../index"
+import { Categories, SpecialDishes, Testimonials, OurServices } from "../index"
 
 const Home = () => {
   return (
@@ -8,6 +8,7 @@ const Home = () => {
       <Categories />
       <SpecialDishes />
       <Testimonials />
+      <OurServices />
     </div>
   )
 }
