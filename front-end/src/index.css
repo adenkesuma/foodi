@@ -19,3 +19,7 @@ body {
 .subtitle {
   @apply text-secondary uppercase tracking-wide mb-2 font-medium text-sm;
 }
+
+.active {
+  @apply text-primary font-bold border-b-2 border-primary;
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Cards } from "../../components";
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
@@ -71,7 +72,25 @@ const Menu = () => {
       </div>
 
       <div className="section-container py-24">
+        <div className="flex justify-between items-end pb-8">
+          <aside className="flex items-center gap-8 flex-wrap">
+            <button className={selectedCategory === "all" ? "active" : ""} onClick={showAll}>All</button>
+            <button className={selectedCategory === "salad" ? "active" : ""} onClick={() => filterItems("salad")}>Salad</button>
+            <button className={selectedCategory === "pizza" ? "active" : ""} onClick={() => filterItems("pizza")}>Pizza</button>
+            <button className={selectedCategory === "soup" ? "active" : ""} onClick={() => filterItems("soup")}>Soups</button>
+            <button className={selectedCategory === "dessert" ? "active" : ""} onClick={() => filterItems("dessert")}>Desserts</button>
+            <button className={selectedCategory === "drinks" ? "active" : ""} onClick={() => filterItems("drinks")}>Drinks</button>
+          </aside>
+          <aside>
 
+          </aside>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {filteredItems.map((item) => (
+            <Cards item={item} key={item._id} />
+          ))}
+        </div> 
       </div>
     </div>
   )
