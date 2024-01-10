@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ShoppingCart, Search, Menu } from "lucide-react";
+import Modal from "./Modal";
 
 const Navbar = () => {
   const navItems = (
@@ -81,7 +82,18 @@ const Navbar = () => {
             </div>
           </div>
 
-          <button className="bg-primary px-6 py-2 rounded-xl text-white font-medium text-sm">Contact</button>
+          <div className="flex items-center gap-2">
+            <Link to="/register" className="border border-primary px-6 py-[7px] rounded-xl text-primary font-medium text-sm">Register</Link>
+            <button 
+              onClick={()=>document.getElementById('my_modal_5').showModal()}
+              className="bg-primary px-6 py-2 rounded-xl text-white font-medium text-sm"
+            >
+              Login
+            </button>
+
+            {/* modal */}
+            <Modal />
+          </div>
         </div>
       </div>
     </nav>
