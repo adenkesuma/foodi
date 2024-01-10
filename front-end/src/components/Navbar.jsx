@@ -12,7 +12,7 @@ const Navbar = () => {
           <summary className="text-sm">Menu</summary>
           <ul className="p- w-32 shadow-none bg-transparent lg:bg-[#ECE3CA] lg:shadow-md">
             <li>
-              <Link className="text-sm" to="/all">All</Link>
+              <Link className="text-sm" to="/menu">All</Link>
             </li>
             <li>
               <Link className="text-sm" to="/salad">Salad</Link>
@@ -57,10 +57,10 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <span className="text-xl font-bold">
+          <Link to="/" className="text-xl font-bold">
             <span className="bg-primary rounded-md px-2 mr-[2px] text-white">F</span>
             OODI
-          </span>
+          </Link>
         </div>
 
         <div className="navbar-center mt-2 hidden lg:flex">

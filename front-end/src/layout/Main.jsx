@@ -3,11 +3,13 @@ import { Navbar, Footer } from "../components"
 
 const Main = () => {
   return (
-    <div className="h-[300vh]">
+    <>
       <Navbar />
-      <Outlet />
+      <div className="min-h-screen">
+        <Outlet />
+      </div>
       <Footer />
-    </div>
+    </>
   )
 }
 
