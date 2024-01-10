@@ -36,7 +36,7 @@ const Footer = () => {
         </nav>
       </footer>
 
-      <footer className="footer items-center p-4 text-neutral-content">
+      <footer className="footer items-center p-4 text-neutral-content section-container">
         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           <Link to="/" className="bg-white/50 p-2 rounded-xl">
             <Twitter className="w-5 h-5 text-gray-800" />
