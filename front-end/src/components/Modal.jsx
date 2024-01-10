@@ -1,25 +1,46 @@
-import { Link } from "react-router-dom"
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Modal = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => console.log(data);
+
   return (
     <dialog id="my_modal_5" className="modal modal-middle sm:modal-middle rounded-3xl">
       <div className="modal-box">
         <div className="modal-action mt-0 flex flex-col gap-4">
-          <form className="card-body" method="dialog">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body" method="dialog">
             <h3 className="font-bold text-xl">Please Login!</h3>
 
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-xs font-semibold">Email</span>
               </label>
-              <input type="email" placeholder="email" className="input rounded-xl py-2 input-bordered" required />
+              <input 
+                type="email" 
+                placeholder="email" 
+                className="input rounded-xl py-2 input-bordered" 
+                {...register("email")}
+                required 
+              />
             </div>
 
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-xs font-semibold">Password</span>
               </label>
-              <input type="password" placeholder="password" className="input rounded-xl py-2 input-bordered" required />
+              <input 
+                type="password" 
+                placeholder="password" 
+                className="input rounded-xl py-2 input-bordered" 
+                {...register("password")}
+                required 
+              />
 
               <label className="label mt-1 text-right block">
                 <Link to="#" className="label-text-alt link link-hover underline font-semibold">Forgot password?</Link>
