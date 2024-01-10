@@ -16,23 +16,23 @@ const Footer = () => {
         </aside> 
         <nav>
           <header className="footer-title">USEFUL LINKS</header> 
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Events</a>
-          <a className="link link-hover">Blogs</a>
-          <a className="link link-hover">FAQ</a>
+          <Link to="/" className="link link-hover">About us</Link>
+          <Link to="/" className="link link-hover">Events</Link>
+          <Link to="/" className="link link-hover">Blogs</Link>
+          <Link to="/" className="link link-hover">FAQ</Link>
         </nav> 
         <nav>
           <header className="footer-title">MAIN MENU</header> 
-          <a className="link link-hover">Home</a>
-          <a className="link link-hover">Offers</a>
-          <a className="link link-hover">Menus</a>
-          <a className="link link-hover">Reservation</a>
+          <Link to="/" className="link link-hover">Home</Link>
+          <Link to="/" className="link link-hover">Offers</Link>
+          <Link to="/" className="link link-hover">Menus</Link>
+          <Link to="/" className="link link-hover">Reservation</Link>
         </nav> 
         <nav>
           <header className="footer-title">CONTACT US</header> 
-          <a className="link link-hover">aden@gmail.com</a>
-          <a className="link link-hover">+6281276169833</a>
-          <a className="link link-hover">Social Media</a>
+          <Link to="/" className="link link-hover">aden@gmail.com</Link>
+          <Link to="/" className="link link-hover">+6281276169833</Link>
+          <Link to="/" className="link link-hover">Social Media</Link>
         </nav>
       </footer>
 
