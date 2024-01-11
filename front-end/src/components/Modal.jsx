@@ -15,6 +15,7 @@ const Modal = () => {
       <div className="modal-box">
         <div className="modal-action mt-0 flex flex-col gap-4">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body" method="dialog">
+            {/* <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" type="button">✕</button> */}
             <h3 className="font-bold text-xl">Please Login!</h3>
 
             <div className="form-control">

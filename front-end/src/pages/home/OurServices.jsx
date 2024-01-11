@@ -2,16 +2,16 @@ import { Soup, AlarmClockCheck, ShoppingBasket, Gift } from "lucide-react";
 
 const serviceLists = [
   {
-    id: 1, title: "Catering", des: "Delight your guests with our flavors and presentation", image: <Soup className="w-16 h-16 text-primary" />
+    id: 1, title: "Catering", des: "Delight your guests with our flavors and presentation", image: <Soup className="w-16 h-16 text-secondary" />
   },
   {
-    id: 2, title: "Fast Delivery", des: "We deliver your order promptly to your door", image: <AlarmClockCheck className="w-16 h-16 text-primary" /> 
+    id: 2, title: "Fast Delivery", des: "We deliver your order promptly to your door", image: <AlarmClockCheck className="w-16 h-16 text-secondary" /> 
   },
   {
-    id: 3, title: "Online Ordering", des: "Explore menu & order with ease using our Online Ordering", image: <ShoppingBasket className="w-16 h-16 text-primary" />
+    id: 3, title: "Online Ordering", des: "Explore menu & order with ease using our Online Ordering", image: <ShoppingBasket className="w-16 h-16 text-secondary" />
   },
   {
-    id: 4, title: "Gift Cards", des: "Give the gift of exceptional dining with Foodi Gift Cards", image: <Gift className="w-16 h-16 text-primary" /> 
+    id: 4, title: "Gift Cards", des: "Give the gift of exceptional dining with Foodi Gift Cards", image: <Gift className="w-16 h-16 text-secondary" /> 
   },
 ];
 
