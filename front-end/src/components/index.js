@@ -4,6 +4,8 @@ import Cards from "./Cards";
 import Footer from "./Footer";
 import Modal from "./Modal";
 import Register from "./Register";
+import Profile from "./Profile";
+import Loading from "./Loading";
 
 export {
   Navbar,
@@ -11,5 +13,7 @@ export {
   Cards,
   Footer,
   Modal,
-  Register
+  Register,
+  Profile,
+  Loading
 };
