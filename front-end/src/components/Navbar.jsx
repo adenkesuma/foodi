@@ -7,7 +7,6 @@ import { Profile } from "./"
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
-  console.log(user)
 
   const navItems = (
     <>
@@ -15,7 +14,8 @@ const Navbar = () => {
         <Link className="text-sm" to="/">Home</Link>
       </li>
       <li>
-        <details>
+       <Link className="text-sm" to="/menu">All Menu</Link>
+        {/* <details>
           <summary className="text-sm">Menu</summary>
           <ul className="p- w-32 shadow-none bg-transparent lg:bg-[#ECE3CA] lg:shadow-md">
             <li>
@@ -28,7 +28,7 @@ const Navbar = () => {
               <Link className="text-sm" to="/pizza">Pizza</Link>
             </li>
           </ul>
-        </details>
+        </details> */}
       </li>
       <li>
         <details>
