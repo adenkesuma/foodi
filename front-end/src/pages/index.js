@@ -5,6 +5,7 @@ import Testimonials from "./home/Testimonials";
 import OurServices from "./home/OurServices";
 import Menu from "./shop/Menu";
 import UpdateProfile from "./dashboard/UpdateProfile";
+import Cart from "./shop/Cart";
 
 export {
   Home,
@@ -13,5 +14,6 @@ export {
   Testimonials,
   OurServices,
   Menu,
-  UpdateProfile
+  UpdateProfile,
+  Cart
 };

@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Cards = ({ item }) => {
   const { image, name, recipe, price, _id } = item;
   const [isHeartFillted, setIsheartFillted] = useState(false);
+  const {user} = useContext(AuthContext);
+
+  const handleAddToCart = (item) => {
+    if (user && user?.email) {
+      const cartItem = { menuItemId: _id, name, quantity: 1, image, price, email: user.email };
+      console.log(cartItem)
+    }
+  }
 
   return (
     <div className="card shadow-none relative sm:52 md:w-72 lg:w-80 xl:w-[290px] bg-base-100 bg-white/30 rounded-3xl z-0">
@@ -33,7 +42,10 @@ const Cards = ({ item }) => {
           <h5 className="text-2xl font-bold">
             <span className="text-secondary">$</span> {price}
           </h5>
-          <button className="px-6 py-2 rounded-xl bg-primary text-white font-semibold text-sm">
+          <button 
+            className="px-6 py-2 rounded-xl bg-primary text-white font-semibold text-sm"
+            onClick={() => handleAddToCart(item)}
+          >
             Buy Now
           </button>
         </div>

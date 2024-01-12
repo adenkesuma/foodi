@@ -81,12 +81,12 @@ const Navbar = () => {
             <Search className="w-5" />
           </button>
 
-          <div className={`relative cursor-pointer ${user ? "mr-0" : "mr-3"}`}>
+          <Link to="/cart" className={`relative cursor-pointer ${user ? "mr-0" : "mr-3"}`}>
             <ShoppingCart className="w-5" />
             <div className="bg-primary absolute -top-2 -right-2 px-[7px] py-[2px] rounded-full flex items-center justify-center">
               <span className="text-white text-xs">8</span>
             </div>
-          </div>
+          </Link>
 
           {user ? (
             <Profile user={user} />
