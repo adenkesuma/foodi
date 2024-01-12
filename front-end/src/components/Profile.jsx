@@ -1,6 +1,7 @@
 import { User } from "lucide-react";
 import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthProvider"
+import { AuthContext } from "../contexts/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Profile = ({ user }) => {
   const { logout } = useContext(AuthContext)
@@ -40,7 +41,7 @@ const Profile = ({ user }) => {
           <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content pt-6">
             <li>
-              <a>Profile</a>
+              <Link to="/update-profile">Profile</Link>
             </li>
             <li>
               <a>Order</a>
@@ -49,9 +50,9 @@ const Profile = ({ user }) => {
               <a>Settings</a>
             </li>
             <li>
-              <a onClick={handleLogout}>
+              <button onClick={handleLogout}>
                 Logout
-              </a>
+              </button>
             </li>
           </ul>
         </div>

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import Home from "../pages/home/Home";
-import { Menu } from "../pages";
+import { Menu, UpdateProfile } from "../pages";
 import { Register } from "../components";
 
 const router = createBrowserRouter([
@@ -16,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu />
+      },
+      {
+        path: "/update-profile",
+        element: <UpdateProfile />
       }
     ]
   },
