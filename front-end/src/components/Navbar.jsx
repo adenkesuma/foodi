@@ -3,6 +3,7 @@ import { ShoppingCart, Search, Menu } from "lucide-react";
 import Modal from "./Modal";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
+import { Profile } from "./"
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -80,25 +81,33 @@ const Navbar = () => {
             <Search className="w-5" />
           </button>
 
-          <div className="relative cursor-pointer mr-3">
+          <div className={`relative cursor-pointer ${user ? "mr-0" : "mr-3"}`}>
             <ShoppingCart className="w-5" />
             <div className="bg-primary absolute -top-2 -right-2 px-[7px] py-[2px] rounded-full flex items-center justify-center">
               <span className="text-white text-xs">8</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Link to="/register" className="border border-primary px-6 py-[7px] rounded-xl text-primary font-medium text-sm">Register</Link>
-            <button 
-              onClick={()=>document.getElementById('my_modal_5').showModal()}
-              className="bg-primary px-6 py-2 rounded-xl text-white font-medium text-sm"
-            >
-              Login
-            </button>
-
-            {/* modal */}
-            <Modal />
-          </div>
+          {user ? (
+            <Profile user={user} />
+          ) : (
+            
+            <div className="flex items-center gap-2">
+              <Link 
+                to="/register" 
+                className="border border-primary px-6 py-[7px] rounded-xl text-primary font-medium text-sm"
+              >
+                Register
+              </Link>
+              <button 
+                onClick={()=>document.getElementById('my_modal_5').showModal()}
+                className="bg-primary px-6 py-2 rounded-xl text-white font-medium text-sm"
+              >
+                Login
+              </button>
+              <Modal />
+            </div>
+          )}
         </div>
       </div>
     </nav>
