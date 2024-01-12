@@ -1,6 +1,21 @@
 import { User } from "lucide-react";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthProvider"
 
 const Profile = ({ user }) => {
+  const { logout } = useContext(AuthContext)
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        alert("logout")
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <div className="-mt-2">
       <div className="drawer drawer-end z-40">
@@ -34,9 +49,9 @@ const Profile = ({ user }) => {
               <a>Settings</a>
             </li>
             <li>
-              <button>
+              <a onClick={handleLogout}>
                 Logout
-              </button>
+              </a>
             </li>
           </ul>
         </div>

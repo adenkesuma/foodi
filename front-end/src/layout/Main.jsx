@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import { Navbar, Footer } from "../components"
+import { Navbar, Footer, Loading } from "../components"
 import { useContext } from "react"
 import { AuthContext } from "../contexts/AuthProvider"
 
@@ -9,9 +9,7 @@ const Main = () => {
   return (
     <>
       {loading ? (
-        <div className="h-screen w-full mx-auto flex justify-center items-center">
-          <p className="animate-ping text-2xl font-bold text-primary">Loading...</p>
-        </div>
+        <Loading />
       ) : (
         <div>
           <Navbar />
