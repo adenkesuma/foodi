@@ -1,14 +1,55 @@
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Modal = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const { signUpWithGmail, login } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user)
+        alert("login successbro")
+
+        document.getElementById("my_modal_5").close();
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log(err)
+        setErrorMessage("Provide a correct email and password");
+      })
+  };
+
+  // google signin
+  const handleLogin = () => {
+    signUpWithGmail()
+      .then((result) => {
+        const user = result.user;
+        console.log(user)
+        alert("login successfull")
+
+        document.getElementById("my_modal_5").close();
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   return (
     <dialog id="my_modal_5" className="modal modal-middle sm:modal-middle rounded-3xl">
@@ -49,6 +90,7 @@ const Modal = () => {
             </div>
 
             {/* err */}
+            {errorMessage ? <p className="text-sm text-primary">*{errorMessage}</p> : ""}
 
             <div className="form-control mt-6">
               <input type="submit" className="btn rounded-xl bg-primary font-semibold text-white" value="Login" />
@@ -76,7 +118,7 @@ const Modal = () => {
           </div>
 
           <div className="flex items-center justify-center gap-6 mb-4">
-            <button className="p-3 rounded-full hover:bg-white/60 bg-white/40">
+            <button className="p-3 rounded-full hover:bg-white/60 bg-white/40" onClick={handleLogin}>
               <img src="/icons/google.svg" alt="google" className="w-7" />
             </button>
             <button className="p-3 rounded-full hover:bg-white/60 bg-white/40">

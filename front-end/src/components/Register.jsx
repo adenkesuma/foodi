@@ -1,15 +1,41 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Register = () => {
    const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const { createUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user)
+        alert("Sign up successful")
+
+        document.getElementById("my_modal_5").close();
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        const errorCode = err.code;
+        const errorMessage = err.message;
+        alert(errorCode);
+        console.log(errorMessage);
+      })
+  };
 
   return (
     <div className="mx-auto max-w-md w-full flex items-center justify-center mt-24">

@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { ShoppingCart, Search, Menu } from "lucide-react";
 import Modal from "./Modal";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user)
+
   const navItems = (
     <>
       <li>
