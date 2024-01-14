@@ -42,27 +42,39 @@ const Cart = () => {
   }
 
   const handleDecrease = (item) => {
-    fetch(`http://localhost:3000/carts/${item._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify({ quantity: item.quantity - 1 })
-    })
-      .then(res => res.json())
-      .then(data => {
-        const updatedCart = cartItems.map((cartItem) => {
-          if (cartItem.id === item.id) {
-            return { ...cartItem, quantity: cartItem.quantity - 1 };
-          }
-
-          return cartItem
-        })
-
-        refetch();
-        setCartItems(updatedCart);
+    if (item.quantity > 1) {
+      fetch(`http://localhost:3000/carts/${item._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({ quantity: item.quantity - 1 })
       })
+        .then(res => res.json())
+        .then(data => {
+          const updatedCart = cartItems.map((cartItem) => {
+            if (cartItem.id === item.id) {
+              return { ...cartItem, quantity: cartItem.quantity - 1 };
+            }
+  
+            return cartItem
+          })
+  
+          refetch();
+          setCartItems(updatedCart);
+        })
+    }
   }
+
+  const calculatePrice = (item) => {
+    return item.price * item.quantity;
+  }
+
+  const cartSubtotal = cart.reduce((total, item) => {
+    return total + calculatePrice(item);
+  }, 0);
+
+  const orderTotal = cartSubtotal;
 
   const handleIncrease = (item) => {
     fetch(`http://localhost:3000/carts/${item._id}`, {
@@ -87,9 +99,6 @@ const Cart = () => {
       })
   }
 
-  const calculatePrice = (item) => {
-    return item.price * item.quantity;
-  }
 
   return (
     <div>
@@ -173,7 +182,7 @@ const Cart = () => {
           <h3 className="font-medium text-2xl">Shopping Details</h3>
           <ul>
             <li className="font-normal text-base">Total items: {cart.length}</li>
-            <li className="font-normal text-base">Total price: $99.0</li>
+            <li className="font-normal text-base">Total price: ${orderTotal.toFixed(2)}</li>
 
             <button className="mt-4 px-6 py-2 rounded-xl bg-primary text-white font-semibold text-sm">
               Procceed Checkout
