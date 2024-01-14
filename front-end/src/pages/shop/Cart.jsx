@@ -1,11 +1,15 @@
 import useCart from "../../hooks/useCart";
 import { Trash2 } from "lucide-react";
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
+  const { user } = useContext(AuthContext);
 
   const handleDelete = (item) => {
+    console.log(item)
     Swal.fire({
       title: "Are you sure?",
       text: "Do you really want to delete this order!",
@@ -13,14 +17,25 @@ const Cart = () => {
       showCancelButton: true,
       confirmButtonColor: "#7D0A0A",
       cancelButtonColor: "#999999",
-      confirmButtonText: "Delete"
+      confirmButtonText: "Yes, Delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your order has been deleted.",
-          icon: "success"
+        fetch(`http://localhost:3000/carts/${item._id}`, {
+          method: "DELETE"
         })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data.deletedCount)
+            if (data.deletedCount > 0) {
+              refetch();
+
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your order has been deleted.",
+                icon: "success"
+              })
+            }
+          })
       }
     })
   }
@@ -79,8 +94,29 @@ const Cart = () => {
                 </tr>
               ))}
             </tbody>
-            
           </table>
+        </div>
+      </div>
+
+      <div className="section-container flex items-top justify-between bg-white rounded-3xl p-8 mt-20">
+        <div className="space-y-3">
+          <h3 className="font-medium text-2xl">Customer Details</h3>
+          <ul>
+            <li className="font-normal text-base">Name: {user.displayName}</li>
+            <li className="font-normal text-base">Email: {user.email}</li>
+          </ul>
+        </div>
+
+        <div className="space-y-3">
+          <h3 className="font-medium text-2xl">Shopping Details</h3>
+          <ul>
+            <li className="font-normal text-base">Total items: {cart.length}</li>
+            <li className="font-normal text-base">Total price: $99.0</li>
+
+            <button className="mt-4 px-6 py-2 rounded-xl bg-primary text-white font-semibold text-sm">
+              Procceed Checkout
+            </button>
+          </ul>
         </div>
       </div>
     </div>

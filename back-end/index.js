@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ServerApiVersion, ObjectId } from "mongodb";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -36,6 +36,13 @@ async function run() {
       res.send(result);
     })
 
+    app.get("/carts/:id", async(req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id)};
+      const result = await cartCollections.findOne(filter);
+      res.send(result);
+    })
+
     app.post("/carts", async(req, res) => {
       const cartItem = req.body;
       const result = await cartCollections.insertOne(cartItem);
@@ -49,7 +56,12 @@ async function run() {
       res.send(result);
     })
 
-    app.delete("/carts")
+    app.delete("/carts/:id", async(req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const result = await cartCollections.deleteOne(filter);
+      res.send(result);
+    })
 
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
