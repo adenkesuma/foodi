@@ -17,7 +17,7 @@ const Cards = ({ item }) => {
       const cartItem = { menuItemId: _id, name, quantity: 1, image, price, email: user.email };
 
       try {
-        const response = await fetch("http://localhost:3000/cart", {
+        const response = await fetch("http://localhost:3000/carts", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

@@ -36,7 +36,7 @@ async function run() {
       res.send(result);
     })
 
-    app.post("/cart", async(req, res) => {
+    app.post("/carts", async(req, res) => {
       const cartItem = req.body;
       const result = await cartCollections.insertOne(cartItem);
       res.send(result);
@@ -46,8 +46,10 @@ async function run() {
       const email = req.query.email;
       const filter = { email: email };
       const result = await cartCollections.find(filter).toArray() ;
-      console.log(result);
+      res.send(result);
     })
+
+    app.delete("/carts")
 
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");

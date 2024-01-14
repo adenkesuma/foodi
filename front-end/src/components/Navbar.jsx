@@ -4,9 +4,11 @@ import Modal from "./Modal";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import { Profile } from "./"
+import useCart from "../hooks/useCart";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
+  const [cart, refetch] = useCart();
 
   const navItems = (
     <>
@@ -84,7 +86,7 @@ const Navbar = () => {
           <Link to="/cart" className={`relative cursor-pointer ${user ? "mr-0" : "mr-3"}`}>
             <ShoppingCart className="w-5" />
             <div className="bg-primary absolute -top-2 -right-2 px-[7px] py-[2px] rounded-full flex items-center justify-center">
-              <span className="text-white text-xs">8</span>
+              <span className="text-white text-xs">{cart.length || 0}</span>
             </div>
           </Link>
 
