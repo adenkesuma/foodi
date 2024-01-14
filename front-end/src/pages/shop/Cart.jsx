@@ -1,12 +1,13 @@
 import useCart from "../../hooks/useCart";
 import { Trash2 } from "lucide-react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
   const { user } = useContext(AuthContext);
+  const [cartItems, setCartItems] = useState([]);
 
   const handleDelete = (item) => {
     console.log(item)
@@ -38,6 +39,56 @@ const Cart = () => {
           })
       }
     })
+  }
+
+  const handleDecrease = (item) => {
+    fetch(`http://localhost:3000/carts/${item._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({ quantity: item.quantity - 1 })
+    })
+      .then(res => res.json())
+      .then(data => {
+        const updatedCart = cartItems.map((cartItem) => {
+          if (cartItem.id === item.id) {
+            return { ...cartItem, quantity: cartItem.quantity - 1 };
+          }
+
+          return cartItem
+        })
+
+        refetch();
+        setCartItems(updatedCart);
+      })
+  }
+
+  const handleIncrease = (item) => {
+    fetch(`http://localhost:3000/carts/${item._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({ quantity: item.quantity + 1 })
+    })
+      .then(res => res.json())
+      .then(data => {
+        const updatedCart = cartItems.map((cartItem) => {
+          if (cartItem.id === item.id) {
+            return { ...cartItem, quantity: cartItem.quantity + 1 };
+          }
+
+          return cartItem
+        })
+
+        refetch();
+        setCartItems(updatedCart);
+      })
+  }
+
+  const calculatePrice = (item) => {
+    return item.price * item.quantity;
   }
 
   return (
@@ -81,10 +132,21 @@ const Cart = () => {
                     {item.name}
                   </td>
                   <td>
-                    {item.quantity}
+                    <button className="btn btn-xs btn-ghost" onClick={() => handleDecrease(item)}>
+                      -
+                    </button>
+                    <input 
+                      type="number" 
+                      value={item.quantity} 
+                      onChange={() => console.log(item.quantity)}
+                      className="w-10 mx-2 text-center overflow-hidden appearance-none border-none outline-none bg-[#ECE3C2]"
+                    />
+                    <button className="btn btn-xs btn-ghost" onClick={() => handleIncrease(item)}>
+                      +
+                    </button>
                   </td>
                   <td className="font-medium">
-                    $ {item.price}
+                    $ {calculatePrice(item).toFixed(2)}
                   </td>
                   <td>
                     <button className="bg-secondary text-white btn btn-sm" onClick={() => handleDelete(item)}>
