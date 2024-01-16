@@ -4,6 +4,7 @@ const menuSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    trim: true,
   },
   recipe: {
     type: String,
