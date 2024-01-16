@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import MenuRoutes from "./routes/MenuRoutes.js";
 import CartRoutes from "./routes/CartRoutes.js";
+import UserRoutes from "./routes/UserRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -31,6 +32,7 @@ mongoose.Promise = global.Promise;
 
 app.use("/menu", MenuRoutes);
 app.use("/carts", CartRoutes);
+app.use("/users", UserRoutes);
 
 app.get("/", (req, res) => {
   res.send("hello bro");

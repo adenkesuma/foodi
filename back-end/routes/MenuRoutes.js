@@ -1,15 +1,19 @@
+// routes/menuRoutes.js
 import express from "express";
-import Menu from "../models/Menu.js";
+import {
+  getAllMenuItems,
+  getMenuItemById,
+  createMenuItem,
+  updateMenuItem,
+  deleteMenuItem,
+} from "../controllers/MenuController.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  try {
-    const result = await Menu.find();
-    res.send(result);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
+router.get("/", getAllMenuItems);
+router.get("/:id", getMenuItemById);
+router.post("/", createMenuItem);
+router.put("/:id", updateMenuItem);
+router.delete("/:id", deleteMenuItem);
 
 export default router;

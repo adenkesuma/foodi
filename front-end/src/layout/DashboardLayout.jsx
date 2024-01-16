@@ -4,13 +4,13 @@ import { ShoppingBag, Menu, PlusCircle, FilePenLine, LayoutDashboard, Users, Hom
 const sharedLinks = (
   <>
     <li>
-      <Link to="/dashboard">
+      <Link to="/">
         <Home className="w-4" />
         <span>Home</span>
       </Link>
     </li>
     <li>
-      <Link to="/dashboard">
+      <Link to="/menu">
         <ShoppingCart className="w-4" />
         <span>Menu</span>
       </Link>
