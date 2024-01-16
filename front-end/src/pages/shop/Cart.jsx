@@ -26,8 +26,7 @@ const Cart = () => {
         })
           .then(res => res.json())
           .then(data => {
-            console.log(data.deletedCount)
-            if (data.deletedCount > 0) {
+            if (data.quantity > 0) {
               refetch();
 
               Swal.fire({
@@ -169,12 +168,12 @@ const Cart = () => {
         </div>
       </div>
 
-      <div className="section-container flex items-top justify-between bg-white rounded-3xl p-8 mt-20">
+      <div className="section-container flex items-top justify-between bg-white/40 rounded-3xl p-8 mt-20">
         <div className="space-y-3">
           <h3 className="font-medium text-2xl">Customer Details</h3>
           <ul>
-            <li className="font-normal text-base">Name: {user.displayName}</li>
-            <li className="font-normal text-base">Email: {user.email}</li>
+            <li className="font-normal text-base">Name: {user?.displayName}</li>
+            <li className="font-normal text-base">Email: {user?.email}</li>
           </ul>
         </div>
 

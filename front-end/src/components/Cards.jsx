@@ -27,7 +27,7 @@ const Cards = ({ item }) => {
 
         const data = await response.json();
 
-        if (data.insertedId) {
+        if (data.quantity) {
           Swal.fire({
             position: "center",
             icon: "success",
