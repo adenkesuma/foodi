@@ -6,6 +6,8 @@ import OurServices from "./home/OurServices";
 import Menu from "./shop/Menu";
 import UpdateProfile from "./dashboard/UpdateProfile";
 import Cart from "./shop/Cart";
+import Dashboard from "./dashboard/admin/Dashboard";
+import Users from "./dashboard/admin/Users";
 
 export {
   Home,
@@ -15,5 +17,7 @@ export {
   OurServices,
   Menu,
   UpdateProfile,
-  Cart
+  Cart,
+  Users,
+  Dashboard
 };

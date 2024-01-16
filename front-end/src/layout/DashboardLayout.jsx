@@ -1,0 +1,69 @@
+import { Link, Outlet } from "react-router-dom";
+import { ShoppingBag, Menu, PlusCircle, FilePenLine, LayoutDashboard, Users } from "lucide-react";
+
+const DashboardLayout = () => {
+  return (
+    <div>
+      <div className="drawer lg:drawer-open">
+        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content flex flex-col items-center justify-center">
+          <div className="w-full px-8 py-2 flex items-center justify-between">
+            <label htmlFor="my-drawer-2" className="py-2 px-4 bg-primary rounded-xl drawer-button lg:hidden">
+              <Menu className="w-4 text-white" />
+            </label>
+
+            <button className="px-6 py-2 rounded-xl bg-primary text-white font-semibold text-sm">Logout</button>
+          </div>
+          <Outlet />
+        </div> 
+        <div className="drawer-side">
+          <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
+          <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            <li className="mb-12">
+              <Link to="/dashboard" className="text-xl font-bold">
+                <span className="bg-primary rounded-md px-2 text-white">F</span>
+                OODI
+
+                <div className="badge badge-primary">admin</div>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/dashboard">
+                <LayoutDashboard className="w-4" />
+                <span>Dashboard</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/users">
+                <ShoppingBag className="w-4" />
+                <span>Manage Bookings</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard">
+                <PlusCircle className="w-4" />
+                <span>Add Menu</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard">
+                <FilePenLine className="w-4" />
+                <span>Manage Items</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/users">
+                <Users className="w-4" />
+                <span>Users</span>
+              </Link>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default DashboardLayout;
