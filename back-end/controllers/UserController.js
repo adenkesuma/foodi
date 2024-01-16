@@ -46,9 +46,11 @@ export const deleteUser = async(req, res) => {
 export const getAdmin = async(req, res) => {
   const email = req.params.email;
   const query = { email: email };
+  console.log(query)
 
   try {
-    const user = await User.findONe(query);
+    const user = await User.findOne(query);
+    console.log(user)
 
     if (email !== req.decoded.email) {
       return res.status(403).send("forbidden access");

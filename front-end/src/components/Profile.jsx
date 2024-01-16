@@ -27,7 +27,7 @@ const Profile = ({ user }) => {
               {user?.photoURL ? (
                 <img 
                   alt="user profile" 
-                  src={user.photoURL}
+                  src={user?.photoURL}
                 />
               ) : (
                 <div className="bg-primary h-full w-full flex items-center justify-center rounded-full">
@@ -44,7 +44,10 @@ const Profile = ({ user }) => {
               <Link to="/update-profile">Profile</Link>
             </li>
             <li>
-              <a>Order</a>
+              <Link to="/order">Order</Link>
+            </li>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
               <a>Settings</a>
