@@ -37,23 +37,6 @@ app.post("/jwt", async(req, res) => {
   res.json({ token });
 });
 
-// verify jwt token
-const verifyToken = (req, res, next) => {
-  if (!req.headers.authorization) {
-    return res.status(401).send("Unauthorized access");
-  }
-
-  const token = req.headers.authorization.split(" ")[1];
-  jwt.verify(token, process.env.ACCESSA_TOKEN_JWT, (err, decoded) => {
-    if (err) {
-      res.status(401).send("Token in invalid!");
-    }
-
-    req.decoded = decoded;
-    next();
-  })
-}
-
 app.use(cors());
 app.use(express.json());
 
