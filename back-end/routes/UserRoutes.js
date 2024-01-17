@@ -6,11 +6,11 @@ import {
   getAdmin,
   makeAdmin
 } from "../controllers/UserController.js";
-import verifyToken from "../middleware/VerifyToken.js";
+// import verifyToken from "../middleware/VerifyToken.js";
 
 const router = express.Router();
 
-router.get("/", verifyToken, getAllUsers);
+router.get("/", getAllUsers);
 router.post("/", createUser);
 router.delete("/:id", deleteUser);
 router.get("/admin/:email", getAdmin);

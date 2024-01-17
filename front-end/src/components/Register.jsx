@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
+import axios from "axios";
 
 const Register = () => {
    const {
@@ -11,7 +12,7 @@ const Register = () => {
     // formState: { errors },
   } = useForm();
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile, signUpWithGmail } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -21,21 +22,56 @@ const Register = () => {
     const password = data.password;
 
     createUser(email, password)
+    .then(() => {
+      console.log(data)
+      
+      updateUserProfile(data.name, data.photoURL)
+      .then(() => {
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+        }
+        
+        axios.post("http://localhost:3000/users", userInfo)
+        .then((response) => {
+            alert("Sign up successful")
+            console.log(response)
+            navigate(from, { replace: true });
+          })
+        })
+
+      document.getElementById("my_modal_5").close();
+    })
+    .catch((err) => {
+      const errorCode = err.code;
+      alert(errorCode);
+    })
+  };
+
+  // google signin
+  const handleLogin = () => {
+    signUpWithGmail()
       .then((result) => {
         const user = result.user;
-        console.log(user)
-        alert("Sign up successful")
+
+        const userInfo = {
+          name: user.displayName,
+          email: user.email,
+        }
+        
+        axios.post("http://localhost:3000/users", userInfo)
+          .then((response) => {
+            alert("Sign up successful")
+            console.log(response)
+            navigate(from, { replace: true });
+          })
 
         document.getElementById("my_modal_5").close();
-        navigate(from, { replace: true });
       })
       .catch((err) => {
-        const errorCode = err.code;
-        const errorMessage = err.message;
-        alert(errorCode);
-        console.log(errorMessage);
+        console.log(err)
       })
-  };
+  }
 
   return (
     <div className="mx-auto max-w-md w-full flex items-center justify-center mt-24">
@@ -43,6 +79,18 @@ const Register = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="card-body" method="dialog">
           {/* <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" type="button">✕</button> */}
           <h3 className="font-bold text-xl">Create An Account!</h3>
+           <div className="form-control">
+            <label className="label">
+              <span className="label-text text-xs font-semibold">Name</span>
+            </label>
+            <input 
+              type="text" 
+              placeholder="name" 
+              className="input rounded-xl py-2 input-bordered" 
+              {...register("name")}
+              required 
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text text-xs font-semibold">Email</span>
@@ -92,7 +140,7 @@ const Register = () => {
         </div>
 
         <div className="flex items-center justify-center gap-6 mb-4">
-          <button className="p-3 rounded-full hover:bg-white/60 bg-white/40">
+          <button className="p-3 rounded-full hover:bg-white/60 bg-white/40" onClick={handleLogin}>
             <img src="/icons/google.svg" alt="google" className="w-7" />
           </button>
           <button className="p-3 rounded-full hover:bg-white/60 bg-white/40">
