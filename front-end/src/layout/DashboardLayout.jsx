@@ -1,5 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { ShoppingBag, Menu, PlusCircle, FilePenLine, LayoutDashboard, Users, Home, ShoppingCart, Send, ShieldQuestion } from "lucide-react";
+import useAuth from "../hooks/useAuth";
+import useAdmin from "../hooks/useAdmin";
 
 const sharedLinks = (
   <>
@@ -31,7 +33,10 @@ const sharedLinks = (
 )
 
 const DashboardLayout = () => {
-  const isAdmin = true;
+  const { loading } = useAuth();
+  const [isAdmin, isAdminLoading] = useAdmin();
+
+  console.log(isAdmin, "admin lo")
 
   return (
     <div>
