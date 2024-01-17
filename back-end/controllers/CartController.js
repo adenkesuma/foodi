@@ -51,7 +51,6 @@ export const getCartItemsByEmail = async (req, res) => {
     const email = req.query.email;
     const filter = { email: email };
     const result = await Cart.find(filter);
-    console.log(result)
     res.send(result);
   } catch (error) {
     res.status(500).send(error.message);

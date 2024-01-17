@@ -11,7 +11,7 @@ import verifyToken from "../middleware/VerifyToken.js";
 
 const router = express.Router();
 
-router.get("/", verifyToken, getCartItemsByEmail);
+router.get("/", getCartItemsByEmail);
 router.get("/:id", getCartItemById);
 router.post("/", createCartItem);
 router.put("/:id", updateCartItem);

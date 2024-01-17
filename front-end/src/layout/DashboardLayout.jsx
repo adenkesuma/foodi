@@ -5,25 +5,25 @@ const sharedLinks = (
   <>
     <li>
       <Link to="/">
-        <Home className="w-4" />
+        <Home className="w-4 text-primary mr-3" />
         <span>Home</span>
       </Link>
     </li>
     <li>
       <Link to="/menu">
-        <ShoppingCart className="w-4" />
+        <ShoppingCart className="w-4 text-primary mr-3" />
         <span>Menu</span>
       </Link>
     </li>
     <li>
       <Link to="/dashboard">
-        <Send className="w-4" />
+        <Send className="w-4 text-primary mr-3" />
         <span>Order Tracking</span>
       </Link>
     </li>
     <li>
       <Link to="/dashboard">
-        <ShieldQuestion className="w-4" />
+        <ShieldQuestion className="w-4 text-primary mr-3" />
         <span>Customer Support</span>
       </Link>
     </li>
@@ -68,36 +68,36 @@ const DashboardLayout = () => {
               <>
                 <li>
                   <Link to="/dashboard">
-                    <LayoutDashboard className="w-4" />
+                    <LayoutDashboard className="w-4 text-primary mr-3" />
                     <span>Dashboard</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/dashboard/users">
-                    <ShoppingBag className="w-4" />
+                    <ShoppingBag className="w-4 text-primary mr-3" />
                     <span>Manage Bookings</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/dashboard">
-                    <PlusCircle className="w-4" />
+                    <PlusCircle className="w-4 text-primary mr-3" />
                     <span>Add Menu</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/dashboard">
-                    <FilePenLine className="w-4" />
+                    <FilePenLine className="w-4 text-primary mr-3" />
                     <span>Manage Items</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/dashboard/users">
-                    <Users className="w-4" />
+                    <Users className="w-4 text-primary mr-3" />
                     <span>Users</span>
                   </Link>
                 </li>
 
-                <div className="w-[80%] ml-4 border-t border-gray-500 my-8" />
+                <div className="w-[80%] ml-4 border-t border-primary my-8" />
               </>
             )}
 

@@ -1,14 +1,48 @@
 import { useQuery } from "@tanstack/react-query";
 import { UsersRound } from "lucide-react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const Users = () => {
+  const axiosSecure = useAxiosSecure();
+
   const { refetch, data: users = [] } = useQuery({
     queryKey: "users",
     queryFn: async () => {
-      const res = await fetch(`http://localhost:3000/users`)
-      return res.json();
+      const res = await axiosSecure.get("/users");
+      return res.data;
     }
-  })
+  });
+
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user._id}`)
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${user.name} is now Admin`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+      
+      refetch();
+  };
+
+  const handleDeleteUser = (user) => {
+    axiosSecure.delete(`/users/${user._id}`)
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+
+      refetch();
+  }
 
   return (
     <div className="w-full">
@@ -39,13 +73,13 @@ const Users = () => {
                     {user.role === "admin" ? (
                       <p className="font-bold text-green-600">Admin</p>
                     ) : (
-                      <button className="py-1 px-3 rounded-xl bg-third">
+                      <button onClick={() => handleMakeAdmin(user)} className="py-1 px-3 rounded-xl bg-third">
                         <UsersRound className="w-4" />
                       </button>
                     )}
                   </td>
                   <td>
-                    <button className="px-3 py-1 rounded-xl bg-secondary text-white font-medium text-sm">
+                    <button onClick={() => handleDeleteUser(user)} className="px-3 py-1 rounded-xl bg-secondary text-white font-medium text-sm">
                       Delete
                     </button>
                   </td>

@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../contexts/AuthProvider";
-import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAuth from "../hooks/useAuth";
 
 const Modal = () => {
   const {
@@ -11,11 +11,12 @@ const Modal = () => {
     // formState: { errors },
   } = useForm();
 
-  const { signUpWithGmail, login } = useContext(AuthContext);
+  const { signUpWithGmail, login } = useAuth();
   const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  const axiosPublic = useAxiosPublic();
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -37,19 +38,9 @@ const Modal = () => {
   // google signin
   const handleLogin = () => {
     signUpWithGmail()
-      .then((result) => {
-        const user = result.user;
-        const userInfo = {
-          name: user.displayName,
-          email: user.email
-        }
-        
-        axios.post("http://localhost:3000/users", userInfo)
-          .then((response) => {
-            alert("Sign up successful")
-            console.log(response)
-            navigate(from, { replace: true });
-          })
+      .then(() => {
+        alert("Sign up successful")
+        navigate(from, { replace: true });
 
         document.getElementById("my_modal_5").close();
       })
