@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import axios from "axios";
 
 const Modal = () => {
   const {
@@ -21,13 +22,11 @@ const Modal = () => {
     const password = data.password;
 
     login(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user)
-        alert("login successbro")
+      .then(() => {
+        alert("Sign in successful")
+        navigate(from, { replace: true });
 
         document.getElementById("my_modal_5").close();
-        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err)
@@ -40,11 +39,19 @@ const Modal = () => {
     signUpWithGmail()
       .then((result) => {
         const user = result.user;
-        console.log(user)
-        alert("login successfull")
+        const userInfo = {
+          name: user.displayName,
+          email: user.email
+        }
+        
+        axios.post("http://localhost:3000/users", userInfo)
+          .then((response) => {
+            alert("Sign up successful")
+            console.log(response)
+            navigate(from, { replace: true });
+          })
 
         document.getElementById("my_modal_5").close();
-        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err)

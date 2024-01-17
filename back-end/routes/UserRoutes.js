@@ -6,6 +6,7 @@ import {
   getAdmin,
   makeAdmin
 } from "../controllers/UserController.js";
+// import verifyToken from "../middleware/VerifyToken.js";
 
 const router = express.Router();
 
