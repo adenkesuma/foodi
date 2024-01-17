@@ -31,6 +31,8 @@ const sharedLinks = (
 )
 
 const DashboardLayout = () => {
+  const isAdmin = true;
+
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -56,42 +58,48 @@ const DashboardLayout = () => {
                 <span className="bg-primary rounded-md px-2 text-white">F</span>
                 OODI
 
-                <div className="badge badge-primary">admin</div>
+                <div className="badge badge-primary">
+                  {isAdmin ? "Admin" : "User" }
+                </div>
               </Link>
             </li>
 
-            <li>
-              <Link to="/dashboard">
-                <LayoutDashboard className="w-4" />
-                <span>Dashboard</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/users">
-                <ShoppingBag className="w-4" />
-                <span>Manage Bookings</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard">
-                <PlusCircle className="w-4" />
-                <span>Add Menu</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard">
-                <FilePenLine className="w-4" />
-                <span>Manage Items</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/users">
-                <Users className="w-4" />
-                <span>Users</span>
-              </Link>
-            </li>
+            {isAdmin && (
+              <>
+                <li>
+                  <Link to="/dashboard">
+                    <LayoutDashboard className="w-4" />
+                    <span>Dashboard</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/users">
+                    <ShoppingBag className="w-4" />
+                    <span>Manage Bookings</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard">
+                    <PlusCircle className="w-4" />
+                    <span>Add Menu</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard">
+                    <FilePenLine className="w-4" />
+                    <span>Manage Items</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/users">
+                    <Users className="w-4" />
+                    <span>Users</span>
+                  </Link>
+                </li>
 
-            <div className="w-[80%] ml-4 border-t border-gray-500 my-8" />
+                <div className="w-[80%] ml-4 border-t border-gray-500 my-8" />
+              </>
+            )}
 
             {sharedLinks}
           </ul>
