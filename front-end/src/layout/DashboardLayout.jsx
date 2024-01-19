@@ -90,7 +90,7 @@ const DashboardLayout = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard">
+                  <Link to="/dashboard/manage-items">
                     <FilePenLine className="w-4 text-primary mr-3" />
                     <span>Manage Items</span>
                   </Link>

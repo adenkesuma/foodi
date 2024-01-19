@@ -6,6 +6,7 @@ import { Register } from "../components";
 import DashboardLayout from "../layout/DashboardLayout";
 import PrivateRouter from "../private-router/PrivateRouter";
 import AddMenu from "../pages/dashboard/admin/AddMenu";
+import ManageItems from "../pages/dashboard/admin/ManageItems";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "add-menu",
         element: <AddMenu />
+      },
+      {
+        path: "manage-items",
+        element: <ManageItems />
       }
     ]
   }
