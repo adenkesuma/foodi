@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -12,6 +12,7 @@ const UpdateMenu = () => {
   } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const item = useLoaderData();
 
@@ -47,6 +48,7 @@ const UpdateMenu = () => {
           showConfirmButton: false,
           timer: 1500
         });
+        navigate("/dashboard/manage-items")
       }
     }
 
