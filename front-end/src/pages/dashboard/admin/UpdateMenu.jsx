@@ -35,14 +35,15 @@ const UpdateMenu = () => {
         image: hostingImg.data.data.display_url
       }
 
-      const postMenuItem = axiosSecure.post("/menu", menuItem); 
+      const postMenuItem = axiosSecure.put(`/menu/${item._id}`, menuItem); 
+      console.log(postMenuItem)
 
       if (postMenuItem) {
         reset();
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Your item is added",
+          title: "Your item is updated",
           showConfirmButton: false,
           timer: 1500
         });
