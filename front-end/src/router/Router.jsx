@@ -5,6 +5,7 @@ import { Cart, Menu, UpdateProfile, Dashboard, Users } from "../pages";
 import { Register } from "../components";
 import DashboardLayout from "../layout/DashboardLayout";
 import PrivateRouter from "../private-router/PrivateRouter";
+import AddMenu from "../pages/dashboard/admin/AddMenu";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />
+      },
+      {
+        path: "add-menu",
+        element: <AddMenu />
       }
     ]
   }

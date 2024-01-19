@@ -14,7 +14,9 @@ const useAdmin = () => {
     }
   })
 
-  return [isAdminLoading, isAdmin, refetch];
+  return isAdmin
+
+  // return [isAdminLoading, isAdmin, refetch];
 }
 
 export default useAdmin

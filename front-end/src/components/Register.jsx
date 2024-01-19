@@ -24,7 +24,6 @@ const Register = () => {
 
     createUser(email, password)
     .then(() => {
-      console.log(data)
       
       updateUserProfile(data.name, data.photoURL)
       .then(() => {

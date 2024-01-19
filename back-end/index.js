@@ -35,7 +35,6 @@ app.use(bodyParser.json());
 // jwt authentication
 app.post("/jwt", async (req, res) => {
   try {
-    console.log(req.body)
     const { name, email } = req.body;
 
     if (!name || !email ) {

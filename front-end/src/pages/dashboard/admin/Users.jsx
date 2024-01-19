@@ -24,9 +24,9 @@ const Users = () => {
           showConfirmButton: false,
           timer: 1500
         });
+        refetch();
       })
       
-      refetch();
   };
 
   const handleDeleteUser = (user) => {
@@ -39,9 +39,9 @@ const Users = () => {
           showConfirmButton: false,
           timer: 1500
         });
+        refetch();
       })
 
-      refetch();
   }
 
   return (

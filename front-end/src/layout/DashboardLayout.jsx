@@ -34,7 +34,7 @@ const sharedLinks = (
 
 const DashboardLayout = () => {
   const { loading } = useAuth();
-  const [isAdmin, isAdminLoading] = useAdmin();
+  const isAdmin = useAdmin();
 
   console.log(isAdmin, "admin lo")
 
@@ -64,12 +64,12 @@ const DashboardLayout = () => {
                 OODI
 
                 <div className="badge badge-primary">
-                  {isAdmin ? "Admin" : "User" }
+                  {isAdmin?.admin ? "Admin" : "User" }
                 </div>
               </Link>
             </li>
 
-            {isAdmin && (
+            {isAdmin?.admin ? (
               <>
                 <li>
                   <Link to="/dashboard">
@@ -84,7 +84,7 @@ const DashboardLayout = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard">
+                  <Link to="/dashboard/add-menu">
                     <PlusCircle className="w-4 text-primary mr-3" />
                     <span>Add Menu</span>
                   </Link>
@@ -104,6 +104,8 @@ const DashboardLayout = () => {
 
                 <div className="w-[80%] ml-4 border-t border-primary my-8" />
               </>
+            ) : (
+              <div></div>
             )}
 
             {sharedLinks}
