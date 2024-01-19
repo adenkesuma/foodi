@@ -9,10 +9,7 @@ const Cart = () => {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
 
-  console.log(localStorage.getItem("token"))
-
   const handleDelete = (item) => {
-    console.log(item)
     Swal.fire({
       title: "Are you sure?",
       text: "Do you really want to delete this order!",

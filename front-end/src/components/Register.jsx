@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
-import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
    const {
@@ -16,6 +16,7 @@ const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  const axiosPublic = useAxiosPublic();
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -23,7 +24,6 @@ const Register = () => {
 
     createUser(email, password)
     .then(() => {
-      console.log(data)
       
       updateUserProfile(data.name, data.photoURL)
       .then(() => {
@@ -32,7 +32,7 @@ const Register = () => {
           email: data.email,
         }
         
-        axios.post("http://localhost:3000/users", userInfo)
+        axiosPublic.post("/users", userInfo)
         .then((response) => {
             alert("Sign up successful")
             console.log(response)
@@ -49,7 +49,7 @@ const Register = () => {
   };
 
   // google signin
-  const handleLogin = () => {
+  const handleRegister = () => {
     signUpWithGmail()
       .then((result) => {
         const user = result.user;
@@ -59,7 +59,7 @@ const Register = () => {
           email: user.email,
         }
         
-        axios.post("http://localhost:3000/users", userInfo)
+        axiosPublic.post("/users", userInfo)
           .then((response) => {
             alert("Sign up successful")
             console.log(response)
@@ -140,7 +140,7 @@ const Register = () => {
         </div>
 
         <div className="flex items-center justify-center gap-6 mb-4">
-          <button className="p-3 rounded-full hover:bg-white/60 bg-white/40" onClick={handleLogin}>
+          <button className="p-3 rounded-full hover:bg-white/60 bg-white/40" onClick={handleRegister}>
             <img src="/icons/google.svg" alt="google" className="w-7" />
           </button>
           <button className="p-3 rounded-full hover:bg-white/60 bg-white/40">
