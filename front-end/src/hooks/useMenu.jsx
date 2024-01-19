@@ -9,7 +9,6 @@ const useMenu = () => {
       const res = await axiosPublic.get("/menu");
       return res.data;
     }
-
   })
 
   return [menu, loading, refetch];
