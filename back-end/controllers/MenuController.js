@@ -2,7 +2,12 @@ import Menu from "../models/Menu.js";
 
 export const getAllMenuItems = async (req, res) => {
   try {
-    const result = await Menu.find({}).sort({ createdAt: -1 });
+    const result = await Menu.find({}).sort({ createdAt: -1 }).maxTimeMS(5000);
+
+    if (!result) {
+      res.status(404).send("there are no menu")
+    }
+
     res.send(result);
   } catch (error) {
     res.status(500).send(error.message);
