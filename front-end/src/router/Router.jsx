@@ -8,6 +8,7 @@ import PrivateRouter from "../private-router/PrivateRouter";
 import AddMenu from "../pages/dashboard/admin/AddMenu";
 import ManageItems from "../pages/dashboard/admin/ManageItems";
 import UpdateMenu from "../pages/dashboard/admin/UpdateMenu";
+import CustomerSupport from "../pages/dashboard/CustomerSupport";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
         path: "update-menu/:id",
         element: <UpdateMenu />,
         loader: ({ params }) => fetch(`http://localhost:3000/menu/${params.id}`)
+      },
+      {
+        path: "customer-support",
+        element: <CustomerSupport />
       }
     ]
   }

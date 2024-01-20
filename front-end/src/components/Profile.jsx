@@ -2,6 +2,7 @@ import { User } from "lucide-react";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Profile = ({ user }) => {
   const { logout } = useContext(AuthContext)
@@ -9,7 +10,14 @@ const Profile = ({ user }) => {
   const handleLogout = () => {
     logout()
       .then(() => {
-        alert("logout")
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+
         window.location.reload(false);
       })
       .catch((err) => {
@@ -44,7 +52,7 @@ const Profile = ({ user }) => {
               <Link to="/update-profile">Profile</Link>
             </li>
             <li>
-              <Link to="/order">Order</Link>
+              <Link to="/menu">Order</Link>
             </li>
             <li>
               <Link to="/dashboard">Dashboard</Link>

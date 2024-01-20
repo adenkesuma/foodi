@@ -4,6 +4,7 @@ import Modal from "./Modal";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Register = () => {
    const {
@@ -24,7 +25,6 @@ const Register = () => {
 
     createUser(email, password)
     .then(() => {
-      
       updateUserProfile(data.name, data.photoURL)
       .then(() => {
         const userInfo = {
@@ -33,9 +33,15 @@ const Register = () => {
         }
         
         axiosPublic.post("/users", userInfo)
-        .then((response) => {
-            alert("Sign up successful")
-            console.log(response)
+        .then(() => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Register successful",
+              showConfirmButton: false,
+              timer: 1500
+            });
+
             navigate(from, { replace: true });
           })
         })
@@ -60,9 +66,15 @@ const Register = () => {
         }
         
         axiosPublic.post("/users", userInfo)
-          .then((response) => {
-            alert("Sign up successful")
-            console.log(response)
+          .then(() => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Register successful",
+              showConfirmButton: false,
+              timer: 1500
+            });
+            
             navigate(from, { replace: true });
           })
 

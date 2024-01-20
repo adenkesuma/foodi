@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Modal = () => {
   const {
@@ -16,7 +17,6 @@ const Modal = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-  const axiosPublic = useAxiosPublic();
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -24,7 +24,14 @@ const Modal = () => {
 
     login(email, password)
       .then(() => {
-        alert("Sign in successful")
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login successful",
+          showConfirmButton: false,
+          timer: 1500
+        });
+
         navigate(from, { replace: true });
 
         document.getElementById("my_modal_5").close();

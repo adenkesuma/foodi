@@ -48,7 +48,7 @@ const Navbar = () => {
         </details>
       </li>
       <li>
-        <Link className="text-sm" to="/offers">Offers</Link> 
+        <Link className="text-sm" to="/">Offers</Link> 
       </li>
     </>
   )

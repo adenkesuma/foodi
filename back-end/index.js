@@ -12,19 +12,29 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const uri = `mongodb+srv://${process.env.USERNAME_MONGODB}:${process.env.PASSWORD_MONGODB}@cluster0.ntdbhbi.mongodb.net/foodi`;
+// const uri = `mongodb+srv://${process.env.USERNAME_MONGODB}:${process.env.PASSWORD_MONGODB}@cluster0.ntdbhbi.mongodb.net/foodi`;
+const uri = `mongodb://${process.env.USERNAME_MONGODB}:${process.env.PASSWORD_MONGODB}@ac-hl5tvur-shard-00-00.ntdbhbi.mongodb.net:27017,ac-hl5tvur-shard-00-01.ntdbhbi.mongodb.net:27017,ac-hl5tvur-shard-00-02.ntdbhbi.mongodb.net:27017/foodi?replicaSet=atlas-r29bdh-shard-0&ssl=true&authSource=admin`
+
+// mongoose.connect(uri, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('Berhasil terhubung ke mongodb');
+}).catch((err) => {
+  console.log(`Gagal terhubung ke mongodb ${err}`)
+})
 
 const db = mongoose.connection;
-
 db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => {
   console.log("Connected to MongoDB");
 });
+
 
 mongoose.Promise = global.Promise;
 
