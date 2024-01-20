@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateProfile = () => {
   const {
@@ -22,7 +23,13 @@ const UpdateProfile = () => {
 
     updateUserProfile(name, photoURL)
       .then(() => {
-        alert("updated success")
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Updated success",
+          showConfirmButton: false,
+          timer: 1500
+        });
         navigate(from, { replace: true })
       })
       .catch((err) => {
