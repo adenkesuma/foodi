@@ -1,4 +1,5 @@
 # Nama Tim: Foodi
+# Github Repository: https://github.com/adenkesuma/foodi
 # Project : Online Store (food)
 # Grub 3
 
@@ -26,12 +27,11 @@
 - Menggunakan fitur verifyToken dan verifyAdmin di middleware
 - Menggunakan ODM (mongoose) untuk koneksi ke database MongoDB
 - Menggunakan struktur file secara modular dan dikelompokkan secara rapi 
-- Baik frontend, backend dan database sudah di deploy di internet
-- Frontend tersedia di Vercel: https://foodi.com
-- Backend tersedia di AWS: https://aws.foodi.com
+- Database di deploy secara online di Mongodb Atlas 
 - Memanfaatkan DaisyUi sebagai framework css
 - Menggunakan ReactRouterDom
 - Menggunakan Firebase sebagai OAuth 
+- Tampilan User Interface yang bagus dan Modern
 - Menggunakan nested route pada react router dom
 - Melakukan validasi apakah user tersebut role nya sebagai admin atau user untuk masuk ke dashboard admin 
 - Melakukan validasi pada bagian order food
