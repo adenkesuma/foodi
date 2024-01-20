@@ -24,7 +24,7 @@ const sharedLinks = (
       </Link>
     </li>
     <li>
-      <Link to="/dashboard">
+      <Link to="/dashboard/customer-support">
         <ShieldQuestion className="w-4 text-primary mr-3" />
         <span>Customer Support</span>
       </Link>

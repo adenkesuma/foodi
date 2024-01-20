@@ -52,7 +52,7 @@ const Profile = ({ user }) => {
               <Link to="/update-profile">Profile</Link>
             </li>
             <li>
-              <Link to="/order">Order</Link>
+              <Link to="/menu">Order</Link>
             </li>
             <li>
               <Link to="/dashboard">Dashboard</Link>
