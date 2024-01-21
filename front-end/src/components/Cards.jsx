@@ -56,7 +56,7 @@ const Cards = ({ item }) => {
 
   return (
     <div className="card shadow-none relative sm:52 md:w-72 lg:w-80 xl:w-[290px] bg-base-100 bg-white/30 rounded-3xl z-0">
-      <button onClick={() => setIsheartFillted(!isHeartFillted)} className={`rating gap-1 absolute right-4 top-4 p-3 rounded-full bg-white/50`}>
+      <button onClick={() => setIsheartFillted(!isHeartFillted)} className={`rating gap-1 absolute right-4 top-4 p-3 rounded-full bg-white/80`}>
         <input 
           type="radio"
           name="like"
@@ -65,18 +65,18 @@ const Cards = ({ item }) => {
         />
       </button>
 
-      <Link to={`/menu/${_id}`} className="pt-6">
-        <figure>
+      <Link to={`/menu/${_id}`}>
+        <figure className="p-2 rounded-xl w-full">
           <img 
             src={image} 
             alt={name} 
-            className="w-48 h-48"
+            className="rounded-xl h-52 w-full object-cover"
           />
         </figure>
       </Link>
       <div className="card-body">
         <h2 className="text-base font-semibold">{name}</h2>
-        <p className="text-sm">{recipe}</p>
+        <p className="text-sm line-clamp-2">{recipe}</p>
 
         <div className="mt-4 card-actions justify-between items-center">
           <h5 className="text-2xl font-bold">
