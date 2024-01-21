@@ -59,7 +59,7 @@ const ManageItems = () => {
                     <img 
                       src={item.image}
                       alt={item.name}
-                      className="rounded-xl w-14"
+                      className="rounded-xl w-14 h-14 object-cover"
                     />
                   </td>
                   <td>{item.name}</td>
